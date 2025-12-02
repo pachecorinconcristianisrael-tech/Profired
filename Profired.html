@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProfiRed - Conectando Profesionistas</title>  
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      height: 60px;
+      margin-top: 10px;
+    }
+    header button {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #e74c3c;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    header button:hover { background-color: #c0392b; }
+
+    .section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px;
+      background-color: #ecf0f1;
+      margin: 20px 0;
+    }
+    .section:nth-child(even) {
+      flex-direction: row-reverse;
+      background-color: #fdfdfd;
+    }
+    .section img {
+      width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .section img:hover { transform: scale(1.05); }
+    .section .text { width: 50%; padding: 20px; }
+    .section h2 {
+      font-size: 32px;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+    .section p {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .map-section {
+      text-align: center;
+      padding: 50px;
+      background-color: #ecf0f1;
+    }
+    .map-section h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    .map-section p {
+      font-size: 20px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+    iframe {
+      width: 90%;
+      height: 500px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Compañías afiliadas */
+    .companies {
+      background: #fdfdfd;
+      padding: 50px;
+      text-align: center;
+    }
+    .companies h2 { margin-bottom: 30px; color: #2c3e50; font-size: 32px; }
+    .company-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+    .company-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 250px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .company-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+    .company-card img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+    .company-card h3 { margin: 10px 0; color: #34495e; }
+    .company-card p { font-size: 14px; color: #555; }
+
+    /* Valores corporativos */
+    .values {
+      background: #ecf0f1;
+      padding: 50px;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .value { max-width: 220px; }
+    .value h3 { color: #2c3e50; font-size: 22px; }
+    .value p { font-size: 15px; color: #555; }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="bienvenida">ProfiRed</h1>
+    <img src="logo.png" alt="Logo ProfiRed">
+    <button id="btnSesion" onclick="gestionarSesion()">Iniciar sesión</button>
+    <p>La red social que conecta contratadores con profesionistas y técnicos</p>
+  </header>
+
+  <section class="section">
+    <div class="text">
+      <h2>👷 Profesionistas</h2>
+      <p>
+        Sube tu currículum de manera sencilla y segura.  
+        Indica tu ubicación para que las empresas cercanas puedan encontrarte rápidamente.  
+        En ProfiRed, tu perfil se convierte en tu carta de presentación: muestra tu experiencia, habilidades, certificaciones y proyectos destacados.  
+        Cuanto más completo sea tu currículum, más oportunidades tendrás de ser contratado en trabajos locales y nacionales.
+      </p>
+    </div>
+    <img src="Obrero.jpg" alt="Imagen de profesionistas">
+  </section>
+
+  <section class="section">
+    <div class="text">
+      <h2>🏢 Empresas</h2>
+      <p>
+        Las compañías afiliadas a ProfiRed tienen acceso a una base de datos de talento especializado.  
+        Encuentra profesionistas verificados para proyectos de construcción, tecnología, diseño, mantenimiento y más.  
+        Con contratos directos y comunicación transparente, las empresas pueden ahorrar tiempo y costos en la búsqueda de personal.  
+        Además, ofrecemos herramientas de gestión para que las compañías administren sus contrataciones de manera eficiente.
+      </p>
+    </div>
+    <img src="barre.jpg" alt="Imagen de empresas">
+  </section>
+
+  <section class="map-section">
+    <h2>📍 Ubicación</h2>
+    <p>
+      Facilitamos el contacto para trabajos rápidos y locales.  
+      Explora el mapa y descubre oportunidades cerca de ti, con filtros de especialidad y disponibilidad.  
+      Nuestro sistema de geolocalización asegura que siempre encuentres al profesionista adecuado en el lugar correcto.
+    </p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." allowfullscreen></iframe>
+  </section>
+
+  <!-- Compañías afiliadas -->
+  <section class="companies">
+    <h2>🌟 Compañías Afiliadas</h2>
+    <div class="company-grid">
+      <div class="company-card">
+        <img src="Google.jpeg" alt="Google">
+        <h3>Google</h3>
+        <p>Innovación tecnológica y oportunidades globales para profesionistas digitales.</p>
+      </div>
+      <div class="company-card">
+        <img src="Micrisift.png" alt="Microsoft">
+        <h3>Microsoft</h3>
+        <p>Soluciones de software y proyectos de transformación digital.</p>
+      </div>
+      <div class="company-card">
+        <img src="Amazon.png" alt="Amazon">
+        <h3>Amazon</h3>
+        <p>Logística, comercio electrónico y servicios en la nube.</p>
+      </div>
+      <div class="company-card">
+        <img src="IBM.png" alt="IBM">
+        <h3>IBM</h3>
+        <p>Consultoría y desarrollo de inteligencia artificial aplicada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valores corporativos -->
+  <section class="values">
+    <div class="value">
+      <h3>🤝 Confianza</h3>
+      <p>Conectamos a profesionales verificados con empresas confiables.</p>
+    </div>
+    <div class="value">
+      <h3>⚡ Rapidez</h3>
+      <p>Encuentra talento y oportunidades en cuestión de minutos.</p>
+    </div>
+    <div class="value">
+      <h3>🌍 Alcance</h3>
+      <p>Una red que crece día a día en todo el mundo.</p>
+    </div>
+      <div class="value">
+      <h3>💡 Innovación</h3>
+      <p>Impulsamos nuevas ideas y tecnologías para mejorar la conexión laboral.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 ProfiRed - Conectando talento con oportunidades</p>
+  </footer>
+
+  <script>
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+    const bienvenida = document.getElementById("bienvenida");
+
+    if (usuario && usuario.correo) {
+      bienvenida.textContent = `Bienvenido, ${usuario.correo}`;
+    } else {
+      bienvenida.textContent = "Bienvenido a ProfiRed";
+    }
+
+    function gestionarSesion() {
+      window.location.href = "inicio.html"; 
+    }
+  </script>
+</body>
+</html>

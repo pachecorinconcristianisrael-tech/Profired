@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - ProfiRed</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .registro-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      width: 350px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .registro-box h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    .registro-box input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .registro-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+      transition: background 0.3s;
+    }
+    .registro-box button:hover {
+      background-color: #1e8449;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <div class="registro-box">
+    <h1>Registro de usuario</h1>
+    <form onsubmit="event.preventDefault(); registrar();">
+      <input type="email" id="correo" placeholder="Correo Gmail" required><br>
+      <input type="text" id="nombre" placeholder="Nombre completo" required><br>
+      <input type="number" id="edad" placeholder="Edad" required><br>
+      <input type="password" id="password" placeholder="Contraseña" required><br>
+      <button type="submit">Registrar</button>
+    </form>
+  </div>
+
+  <script>
+    function registrar() {
+      const correo = document.getElementById("correo").value;
+      const nombre = document.getElementById("nombre").value;
+      const edad = document.getElementById("edad").value;
+      const password = document.getElementById("password").value;
+
+      const nuevoUsuario = { correo, nombre, edad, password };
+
+      // Guardar en lista de usuarios
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+      usuarios.push(nuevoUsuario);
+      localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+      // Guardar como usuario activo
+      localStorage.setItem("usuarioActivo", JSON.stringify(nuevoUsuario));
+
+      alert("✅ Registro exitoso. ¡Bienvenido a ProfiRed! 🎉");
+
+      // Redirigir directamente a inicio de sesión
+      window.location.href = "inicio.html"; 
+      // Si prefieres que vaya a general.html, cambia la línea anterior por:
+      // window.location.href = "general.html";
+    }
+  </script>
+</body>
+</html>
